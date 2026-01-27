@@ -1,0 +1,141 @@
+{
+    "linkPage": {
+        "id": "S2V9G5SaxmImN3mM0rGi",
+        "ownerId": "x0P8bcooVLMknfD0FL86KcxOsMH3",
+        "slug": "p-x0P8b-dpib9e",
+        "status": "active",
+        "createdAt": "2026-01-27T18:20:00.000Z",
+        "views": 0,
+        "clicks": 0,
+        "profile": {
+            "name": "Wave Beauty Lounge",
+            "bio": "Premium beauty services in Dubai",
+            "logo": "https://storage.googleapis.com/dvizfb.firebasestorage.app/tenants/x0P8bcooVLMknfD0FL86KcxOsMH3/uploads/Cj1ex7FLammjz5L_xGoX7.png",
+            "address": "Dubai",
+            "email": "mail@saveaday.ai",
+            "phone": "+971569737344"
+        },
+        "theme": {
+            "background": "bg-gray-50",
+            "buttonStyle": "rounded",
+            "font": "sans"
+        },
+        "links": [
+            {
+                "id": "cPfEPLcAlXOTzoE5DJpNN",
+                "type": "social",
+                "label": "Instagram",
+                "url": "https://instagram.com/pretheesh",
+                "order": 0,
+                "active": true,
+                "icon": "instagram"
+            },
+            {
+                "id": "xTbcJlqOlYpMQxrcy-fLr",
+                "type": "social",
+                "label": "Facebook",
+                "url": "https://facebook.com/saveaday",
+                "order": 1,
+                "active": true,
+                "icon": "facebook"
+            },
+            {
+                "id": "U_qynDnH8zOGYXZkQWH8e",
+                "type": "whatsapp",
+                "label": "Whatsapp",
+                "url": "+971569737344",
+                "order": 2,
+                "active": true
+            }
+        ],
+        "updatedAt": "2026-01-27T18:20:00.000Z"
+    },
+    "catalogue": {
+        "id": "VzB8iwGnFV40SeRXOH0p",
+        "ownerId": "x0P8bcooVLMknfD0FL86KcxOsMH3",
+        "businessName": "Wave Beauty Lounge",
+        "slug": "wave-beauty",
+        "status": "active",
+        "theme": {
+            "primaryColor": "#000000",
+            "font": "sans"
+        },
+        "createdAt": {
+            "_seconds": 1769001099,
+            "_nanoseconds": 177000000
+        },
+        "categories": [
+            {
+                "title": "Hair Styles & Cuts",
+                "items": [
+                    {
+                        "title": "BlowDry Straight",
+                        "description": "Professional blow dry with straight styling",
+                        "price": 60,
+                        "variants": [
+                            {
+                                "label": "Short",
+                                "price": 60
+                            },
+                            {
+                                "label": "Medium",
+                                "price": 80
+                            },
+                            {
+                                "label": "Long",
+                                "price": 100
+                            },
+                            {
+                                "label": "Long+",
+                                "price": 120
+                            }
+                        ]
+                    },
+                    {
+                        "title": "Hair Style",
+                        "description": "Complete hair styling service",
+                        "price": 150,
+                        "variants": [
+                            {
+                                "label": "Short",
+                                "price": 150
+                            },
+                            {
+                                "label": "Medium",
+                                "price": 200
+                            },
+                            {
+                                "label": "Long",
+                                "price": 250
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "title": "Nail Services",
+                "items": [
+                    {
+                        "title": "Manicure",
+                        "description": "Professional manicure service",
+                        "price": 60
+                    },
+                    {
+                        "title": "Pedicure",
+                        "description": "Professional pedicure service",
+                        "price": 70
+                    },
+                    {
+                        "title": "Gel Color",
+                        "description": "Gel nail polish application",
+                        "price": 70
+                    }
+                ]
+            }
+        ],
+        "updatedAt": {
+            "_seconds": 1769515782,
+            "_nanoseconds": 19000000
+        }
+    }
+}
