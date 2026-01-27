@@ -5,7 +5,6 @@ import { HashRouter as Router, Routes, Route, useParams, Navigate, Link } from '
 import { PAGE_DATA, CATALOGUE_DATA } from './constants';
 import { LinkPage } from './types';
 import { LinkCard } from './components/LinkCard';
-import { AIInsightPanel } from './components/AIInsightPanel';
 import { CataloguePage } from './components/CataloguePage';
 import { Mail, Phone, MapPin, Share2, Package } from 'lucide-react';
 
@@ -122,9 +121,6 @@ const ProfilePage: React.FC = () => {
               <LinkCard key={link.id} link={link} theme={theme} />
             ))}
         </div>
-
-        {/* AI Brand Insight */}
-        <AIInsightPanel page={pageData} />
 
         {/* Footer */}
         <footer className="mt-20 text-center space-y-6">

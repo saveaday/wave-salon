@@ -26,19 +26,13 @@ This site uses a **webhook-triggered static build** approach:
    npm install
    ```
 
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) for AI features:
-
-   ```
-   GEMINI_API_KEY=your_api_key_here
-   ```
-
-3. Run the dev server:
+2. Run the dev server:
 
    ```bash
    npm run dev
    ```
 
-4. Build for production:
+3. Build for production:
    ```bash
    npm run build
    ```
@@ -97,7 +91,6 @@ See [implementation_plan.md](docs/implementation_plan.md) for full payload schem
 - 📱 Fully responsive design
 - 🔗 Social media links (Instagram, Facebook, WhatsApp)
 - 📋 Services catalogue with categories and pricing
-- 🤖 AI-powered brand insights (Gemini API)
 - ⚡ Lightning-fast static site
 - 🚀 Automated deployment via webhooks
 
@@ -109,7 +102,6 @@ See [implementation_plan.md](docs/implementation_plan.md) for full payload schem
 - Tailwind CSS
 - React Router
 - Lucide Icons
-- Google Gemini AI
 
 ---
 
