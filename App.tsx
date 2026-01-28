@@ -123,6 +123,14 @@ const ProfilePage: React.FC = () => {
               Take Survey
             </Link>
           )}
+          {LEAD_FORM_DATA && (
+            <Link
+              to="/contact"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-white border border-slate-200 text-slate-800 font-bold rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
+            >
+              {LEAD_FORM_DATA.name}
+            </Link>
+          )}
         </div>
 
         {/* Links Section */}
