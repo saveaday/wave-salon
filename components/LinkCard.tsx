@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { LinkItem, ThemeConfig } from '../types';
-import { Icon } from '@saveaday/shared-ui/src/ui/base/Icon';
+import { IconRenderer } from './IconRenderer';
 
 interface LinkCardProps {
   link: LinkItem;
@@ -52,15 +52,15 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, theme }) => {
     >
       <div className="flex items-center gap-3">
         <div className="p-2 bg-indigo-50 rounded-lg group-hover:bg-indigo-100 transition-colors">
-          <Icon 
-            name={getIconName()} 
+          <IconRenderer 
+            icon={getIconName()} 
             className="w-5 h-5 text-indigo-600" 
           />
         </div>
         <span className="font-semibold text-slate-800">{link.label}</span>
       </div>
       <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-        <Icon name="external-link" size="xs" className="text-slate-400" />
+        <IconRenderer icon="external-link" className="w-4 h-4 text-slate-400" />
       </div>
     </a>
   );

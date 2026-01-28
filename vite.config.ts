@@ -16,9 +16,7 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
-          '@saveaday/shared-ui/src': path.resolve(__dirname, '../packages/shared-ui/src'),
-          '@saveaday/shared-ui': path.resolve(__dirname, '../packages/shared-ui/src/index.ts'),
-        }
-      }
+        },
+      },
     };
 });
