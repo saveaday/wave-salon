@@ -389,8 +389,8 @@ export const INITIAL_DATA: ApiResponse = {
 
 // Import generated data from webhook payload (if exists)
 // Using Vite's import.meta.glob for conditional imports
-const generatedDataModules = import.meta.glob('./generated-data.json', { eager: true });
-const generatedData = generatedDataModules['./generated-data.json'] as any;
+const generatedDataModules = import.meta.glob('./src/generated-data.json', { eager: true });
+const generatedData = (generatedDataModules['./src/generated-data.json'] as any)?.default;
 
 // Export data for use in App
 // If generated data exists (from webhook build), use it; otherwise use fallback
