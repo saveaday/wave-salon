@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Catalogue, ThemeConfig } from '../types';
 import { ChevronDown, ChevronUp, ArrowLeft, Info } from 'lucide-react';
