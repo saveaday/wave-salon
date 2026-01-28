@@ -104,9 +104,9 @@ const ProfilePage: React.FC = () => {
           )}
         </div>
 
-        {/* Action Buttons */}
-        <div className="space-y-4 mb-8 px-2">
-          {CATALOGUE_DATA && (
+        {/* View Services Button */}
+        {CATALOGUE_DATA && (
+          <div className="mb-6 px-2">
             <Link
               to="/services"
               className="flex items-center justify-center gap-3 w-full p-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
@@ -114,24 +114,8 @@ const ProfilePage: React.FC = () => {
               <Package className="w-5 h-5" />
               View Services
             </Link>
-          )}
-          {SURVEY_DATA && (
-            <Link
-              to="/survey"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-white border border-slate-200 text-slate-800 font-bold rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
-            >
-              Take Survey
-            </Link>
-          )}
-          {LEAD_FORM_DATA && (
-            <Link
-              to="/contact"
-              className="flex items-center justify-center gap-3 w-full p-4 bg-white border border-slate-200 text-slate-800 font-bold rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
-            >
-              {LEAD_FORM_DATA.name}
-            </Link>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* Links Section */}
         <div className="space-y-4 px-2">
@@ -142,6 +126,28 @@ const ProfilePage: React.FC = () => {
               <LinkCard key={link.id} link={link} theme={theme} />
             ))}
         </div>
+
+        {/* Secondary Actions - Less Prominent */}
+        {(SURVEY_DATA || LEAD_FORM_DATA) && (
+          <div className="mt-8 px-2 space-y-2">
+            {SURVEY_DATA && (
+              <Link
+                to="/survey"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-slate-50 hover:bg-slate-100 text-slate-600 text-sm font-medium rounded-lg transition-colors"
+              >
+                {SURVEY_DATA.name}
+              </Link>
+            )}
+            {LEAD_FORM_DATA && (
+              <Link
+                to="/contact"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-slate-50 hover:bg-slate-100 text-slate-600 text-sm font-medium rounded-lg transition-colors"
+              >
+                {LEAD_FORM_DATA.name}
+              </Link>
+            )}
+          </div>
+        )}
 
         {/* Footer */}
         <footer className="mt-20 text-center pb-8">
