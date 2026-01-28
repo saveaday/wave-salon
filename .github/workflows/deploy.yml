@@ -1,6 +1,8 @@
 name: Deploy Link Page
 
 on:
+  push:
+    branches: [main, master]
   repository_dispatch:
     types: [publish_content]
 
@@ -21,6 +23,7 @@ jobs:
         run: npm install
 
       - name: Generate data file from payload
+        if: github.event_name == 'repository_dispatch'
         run: |
           mkdir -p src
           echo '${{ toJSON(github.event.client_payload.data) }}' > src/generated-data.json
