@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route, useParams, Navigate, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams, Navigate, Link } from 'react-router-dom';
 import { PAGE_DATA, CATALOGUE_DATA } from './constants';
 import { LinkPage } from './types';
 import { LinkCard } from './components/LinkCard';
@@ -11,7 +11,6 @@ import { Mail, Phone, MapPin, Share2, Package } from 'lucide-react';
 import { ThemeProvider } from './components/ThemeProvider';
 
 const ProfilePage: React.FC = () => {
-  const { slug: urlSlug } = useParams<{ slug: string }>();
   const [pageData] = useState<LinkPage>(PAGE_DATA);
   const [imgError, setImgError] = useState(false);
   const isCustomBg = pageData?.theme?.background && !pageData.theme.background.startsWith('bg-');
@@ -37,7 +36,7 @@ const ProfilePage: React.FC = () => {
       navigator.share({
         title: profile.name,
         text: profile.bio,
-        url: window.location.href,
+        url: window.location.origin, // Use origin for root URL
       }).catch(console.error);
       alert('Link copied to clipboard!');
     }
@@ -104,7 +103,7 @@ const ProfilePage: React.FC = () => {
         {/* View Services Button */}
         <div className="mb-6 px-2">
           <Link
-            to={`/${pageData.slug}/services`}
+            to="/services"
             className="flex items-center justify-center gap-3 w-full p-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
           >
             <Package className="w-5 h-5" />
@@ -141,9 +140,9 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/:slug/services" element={<CataloguePage catalogue={CATALOGUE_DATA} theme={PAGE_DATA.theme} />} />
-        <Route path="/:slug" element={<ProfilePage />} />
-        <Route path="/" element={<Navigate to={`/${PAGE_DATA.slug}`} replace />} />
+        <Route path="/services" element={<CataloguePage catalogue={CATALOGUE_DATA} theme={PAGE_DATA.theme} />} />
+        <Route path="/" element={<ProfilePage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
