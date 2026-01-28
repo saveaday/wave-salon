@@ -2,18 +2,28 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Catalogue, ThemeConfig } from '../types';
-import { ChevronDown, ChevronUp, ArrowLeft } from 'lucide-react';
+import { ChevronDown, ChevronUp, ArrowLeft, Info } from 'lucide-react';
 import { ThemeProvider } from './ThemeProvider';
 
 interface CataloguePageProps {
   catalogue: Catalogue;
   theme: ThemeConfig;
+  businessName: string;
 }
 
-export const CataloguePage: React.FC<CataloguePageProps> = ({ catalogue, theme }) => {
+export const CataloguePage: React.FC<CataloguePageProps> = ({ catalogue, theme, businessName }) => {
   const navigate = useNavigate();
   const { slug } = useParams<{ slug: string }>();
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([0]));
+
+  useEffect(() => {
+    // Set dynamic SEO
+    document.title = `Services | ${businessName}`;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', `Explore our range of beauty services at ${businessName}`);
+    }
+  }, [businessName]);
 
   const toggleCategory = (index: number) => {
     const newExpanded = new Set(expandedCategories);
@@ -37,11 +47,11 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({ catalogue, theme }
         className={`min-h-screen w-full flex flex-col py-8 px-4 sm:px-6 transition-all duration-700 ${!isCustomBg ? theme.background : ''}`}
         style={isCustomBg ? { background: 'var(--app-background)' } : {}}
       >
-        <div className="max-w-3xl w-full mx-auto">
+        <div className="max-w-3xl w-full mx-auto flex-1">
           {/* Header */}
           <div className="mb-8">
             <button
-              onClick={() => navigate(`/${slug}`)}
+              onClick={() => navigate('/')}
               className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors mb-4 group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
@@ -136,12 +146,23 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({ catalogue, theme }
           </div>
 
           {/* Footer */}
-          <footer className="mt-12 text-center">
+          <footer className="mt-12 text-center pb-8">
             <p className="text-xs text-slate-400 uppercase tracking-widest font-bold opacity-60">
-              © 2026 {catalogue.businessName}
+              © 2026 {businessName}
             </p>
           </footer>
         </div>
+
+        {/* Info Button */}
+        <a 
+          href="https://saveaday.ai" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 p-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all group z-50"
+          title="Powered by SaveADay"
+        >
+          <Info className="w-5 h-5 text-indigo-600 group-hover:text-indigo-700" />
+        </a>
       </div>
     </ThemeProvider>
   );

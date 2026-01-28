@@ -1,12 +1,13 @@
 
 
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams, Navigate, Link } from 'react-router-dom';
-import { PAGE_DATA, CATALOGUE_DATA } from './constants';
+import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom';
+import { PAGE_DATA, CATALOGUE_DATA, SURVEY_DATA, LEAD_FORM_DATA } from './constants';
 import { LinkPage } from './types';
 import { LinkCard } from './components/LinkCard';
 import { CataloguePage } from './components/CataloguePage';
-import { Mail, Phone, MapPin, Share2, Package } from 'lucide-react';
+import { EmbedPage } from './components/EmbedPage';
+import { Mail, Phone, MapPin, Share2, Package, Info } from 'lucide-react';
 
 import { ThemeProvider } from './components/ThemeProvider';
 
@@ -19,12 +20,13 @@ const ProfilePage: React.FC = () => {
   React.useEffect(() => {
     document.title = pageData.profile.name;
     const metaDesc = document.querySelector('meta[name="description"]');
+    const content = pageData.profile.bio || `Connect with ${pageData.profile.name}`;
     if (metaDesc) {
-      metaDesc.setAttribute('content', pageData.profile.bio);
+      metaDesc.setAttribute('content', content);
     } else {
       const meta = document.createElement('meta');
       meta.name = 'description';
-      meta.content = pageData.profile.bio;
+      meta.content = content;
       document.head.appendChild(meta);
     }
   }, [pageData]);
@@ -36,8 +38,10 @@ const ProfilePage: React.FC = () => {
       navigator.share({
         title: profile.name,
         text: profile.bio,
-        url: window.location.origin, // Use origin for root URL
+        url: window.location.origin,
       }).catch(console.error);
+    } else {
+      navigator.clipboard.writeText(window.location.origin);
       alert('Link copied to clipboard!');
     }
   };
@@ -100,15 +104,25 @@ const ProfilePage: React.FC = () => {
           )}
         </div>
 
-        {/* View Services Button */}
-        <div className="mb-6 px-2">
-          <Link
-            to="/services"
-            className="flex items-center justify-center gap-3 w-full p-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
-          >
-            <Package className="w-5 h-5" />
-            View Services
-          </Link>
+        {/* Action Buttons */}
+        <div className="space-y-4 mb-8 px-2">
+          {CATALOGUE_DATA && (
+            <Link
+              to="/services"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
+            >
+              <Package className="w-5 h-5" />
+              View Services
+            </Link>
+          )}
+          {SURVEY_DATA && (
+            <Link
+              to="/survey"
+              className="flex items-center justify-center gap-3 w-full p-4 bg-white border border-slate-200 text-slate-800 font-bold rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02]"
+            >
+              Take Survey
+            </Link>
+          )}
         </div>
 
         {/* Links Section */}
@@ -122,15 +136,23 @@ const ProfilePage: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <footer className="mt-20 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/80 border border-slate-200 rounded-full text-[10px] font-bold text-slate-400 tracking-[0.2em] uppercase shadow-sm">
-            Powered by <span className="text-indigo-600">LinkPulse</span>
-          </div>
+        <footer className="mt-20 text-center pb-8">
           <p className="text-[10px] text-slate-400 uppercase tracking-widest font-bold opacity-60">
             © 2026 {profile.name}
           </p>
         </footer>
       </div>
+
+      {/* Info Button */}
+      <a 
+        href="https://saveaday.ai" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 p-3 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all group z-50"
+        title="Powered by SaveADay"
+      >
+        <Info className="w-5 h-5 text-indigo-600 group-hover:text-indigo-700" />
+      </a>
     </div>
   </ThemeProvider>
 );
@@ -140,12 +162,38 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/services" element={<CataloguePage catalogue={CATALOGUE_DATA} theme={PAGE_DATA.theme} />} />
+        <Route path="/services" element={<CataloguePage catalogue={CATALOGUE_DATA} theme={PAGE_DATA.theme} businessName={PAGE_DATA.profile.name} />} />
+        <Route 
+          path="/survey" 
+          element={
+            SURVEY_DATA ? (
+              <EmbedPage 
+                title={SURVEY_DATA.name} 
+                description={SURVEY_DATA.description} 
+                embedCode={SURVEY_DATA.embedCode} 
+                theme={PAGE_DATA.theme}
+                businessName={PAGE_DATA.profile.name}
+              />
+            ) : <Navigate to="/" replace />
+          } 
+        />
+        <Route 
+          path="/contact" 
+          element={
+            LEAD_FORM_DATA ? (
+              <EmbedPage 
+                title={LEAD_FORM_DATA.name} 
+                description={LEAD_FORM_DATA.description} 
+                embedCode={LEAD_FORM_DATA.embedCode} 
+                theme={PAGE_DATA.theme}
+                businessName={PAGE_DATA.profile.name}
+              />
+            ) : <Navigate to="/" replace />
+          } 
+        />
         <Route path="/" element={<ProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
-};
-
 export default App;
