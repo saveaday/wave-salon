@@ -127,13 +127,13 @@ const ProfilePage: React.FC = () => {
             ))}
         </div>
 
-        {/* Secondary Actions - Less Prominent */}
+        {/* Secondary Actions - Text Links */}
         {(SURVEY_DATA || LEAD_FORM_DATA) && (
-          <div className="mt-8 px-2 flex gap-2">
+          <div className="mt-8 px-2 flex justify-center gap-6 text-sm">
             {SURVEY_DATA && (
               <Link
                 to="/survey"
-                className="flex items-center justify-center gap-2 flex-1 p-3 bg-slate-50 hover:bg-slate-100 text-slate-600 text-sm font-medium rounded-lg transition-colors"
+                className="text-slate-500 hover:text-slate-700 underline underline-offset-4 transition-colors"
               >
                 {SURVEY_DATA.name}
               </Link>
@@ -141,7 +141,7 @@ const ProfilePage: React.FC = () => {
             {LEAD_FORM_DATA && (
               <Link
                 to="/contact"
-                className="flex items-center justify-center gap-2 flex-1 p-3 bg-slate-50 hover:bg-slate-100 text-slate-600 text-sm font-medium rounded-lg transition-colors"
+                className="text-slate-500 hover:text-slate-700 underline underline-offset-4 transition-colors"
               >
                 {LEAD_FORM_DATA.name}
               </Link>
