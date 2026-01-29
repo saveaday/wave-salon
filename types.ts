@@ -75,6 +75,7 @@ export interface LinkPage {
   links: LinkItem[];
   theme: ThemeConfig;
   catalogueId?: string;
+  gaTrackingId?: string;
 }
 
 export interface ApiResponse {

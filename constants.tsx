@@ -398,3 +398,4 @@ export const PAGE_DATA = generatedData?.linkPage || INITIAL_DATA.data[0];
 export const CATALOGUE_DATA = generatedData?.catalogue || SAMPLE_CATALOGUE;
 export const SURVEY_DATA = generatedData?.survey || null;
 export const LEAD_FORM_DATA = generatedData?.leadForm || null;
+export const GA_ID = generatedData?.linkPage?.gaTrackingId || PAGE_DATA.gaTrackingId;

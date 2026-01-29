@@ -1,13 +1,13 @@
 
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom';
-import { PAGE_DATA, CATALOGUE_DATA, SURVEY_DATA, LEAD_FORM_DATA } from './constants';
+import { PAGE_DATA, CATALOGUE_DATA, SURVEY_DATA, LEAD_FORM_DATA, GA_ID } from './constants';
 import { LinkPage } from './types';
 import { LinkCard } from './components/LinkCard';
 import { CataloguePage } from './components/CataloguePage';
 import { EmbedPage } from './components/EmbedPage';
 import { Mail, Phone, MapPin, Share2, Package, Info } from 'lucide-react';
+import { initializeGA } from './utils/analytics';
 
 import { ThemeProvider } from './components/ThemeProvider';
 
@@ -15,6 +15,11 @@ const ProfilePage: React.FC = () => {
   const [pageData] = useState<LinkPage>(PAGE_DATA);
   const [imgError, setImgError] = useState(false);
   const isCustomBg = pageData?.theme?.background && !pageData.theme.background.startsWith('bg-');
+
+  // Initialize Google Analytics
+  React.useEffect(() => {
+    initializeGA(GA_ID);
+  }, []);
 
   // Set dynamic SEO
   React.useEffect(() => {
