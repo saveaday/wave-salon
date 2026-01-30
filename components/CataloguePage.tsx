@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Catalogue, ThemeConfig } from '../types';
 import { ChevronDown, ChevronUp, ArrowLeft, Info } from 'lucide-react';
 import { ThemeProvider } from './ThemeProvider';
+import { trackCategoryExpand } from '../utils/analytics';
 
 interface CataloguePageProps {
   catalogue: Catalogue;
@@ -23,14 +24,50 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({ catalogue, theme, 
     if (metaDesc) {
       metaDesc.setAttribute('content', `Explore our range of beauty services at ${businessName}`);
     }
+
+    // Track page view
+    if (window.gtag) {
+      window.gtag('event', 'page_view', {
+        page_title: `Services | ${businessName}`,
+        page_location: window.location.href,
+        page_path: window.location.pathname,
+      });
+      console.log('GA Event: page_view', { page_title: `Services | ${businessName}` });
+    }
   }, [businessName]);
 
   const toggleCategory = (index: number) => {
     const newExpanded = new Set(expandedCategories);
+    const category = catalogue.categories[index];
+    const isExpanding = !newExpanded.has(index);
+    
     if (newExpanded.has(index)) {
       newExpanded.delete(index);
+      // Track category collapse
+      if (window.gtag) {
+        window.gtag('event', 'category_collapse', {
+          category_name: category.title,
+        });
+        console.log('GA Event: category_collapse', { category_name: category.title });
+      }
     } else {
       newExpanded.add(index);
+      // Track category expansion
+      trackCategoryExpand(category.title, category.items.length);
+      
+      // Track item list view (standard GA4 e-commerce event)
+      if (window.gtag) {
+        window.gtag('event', 'view_item_list', {
+          item_list_name: category.title,
+          items: category.items.map((item, idx) => ({
+            item_id: `${category.title}_${idx}`,
+            item_name: item.title,
+            price: item.price,
+            item_category: category.title,
+          })),
+        });
+        console.log('GA Event: view_item_list', { item_list_name: category.title });
+      }
     }
     setExpandedCategories(newExpanded);
   };
@@ -51,7 +88,18 @@ export const CataloguePage: React.FC<CataloguePageProps> = ({ catalogue, theme, 
           {/* Header */}
           <div className="mb-8">
             <button
-              onClick={() => navigate('/')}
+              onClick={() => {
+                // Track navigation
+                if (window.gtag) {
+                  window.gtag('event', 'navigation_click', {
+                    destination: 'profile',
+                    source: 'catalogue',
+                    button_text: 'Back to Profile',
+                  });
+                  console.log('GA Event: navigation_click', { destination: 'profile' });
+                }
+                navigate('/');
+              }}
               className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors mb-4 group"
             >
               <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />

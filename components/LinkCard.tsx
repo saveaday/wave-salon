@@ -2,6 +2,7 @@
 import React from 'react';
 import { LinkItem, ThemeConfig } from '../types';
 import { IconRenderer } from './IconRenderer';
+import { trackLinkClick } from '../utils/analytics';
 
 interface LinkCardProps {
   link: LinkItem;
@@ -42,6 +43,9 @@ export const LinkCard: React.FC<LinkCardProps> = ({ link, theme }) => {
       href={getHref()}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => {
+        trackLinkClick(link.label, getHref(), link.type);
+      }}
       className={`
         flex items-center justify-between w-full p-4 mb-4 
         bg-white border border-slate-200 

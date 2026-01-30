@@ -186,6 +186,16 @@ const ProfilePage: React.FC = () => {
             <div className="mb-6 px-2">
               <Link
                 to="/services"
+                onClick={() => {
+                  if (window.gtag) {
+                    window.gtag('event', 'button_click', {
+                      button_text: 'View Services',
+                      destination: '/services',
+                      button_type: 'navigation',
+                    });
+                    console.log('GA Event: button_click', { button_text: 'View Services' });
+                  }
+                }}
                 className="flex items-center justify-center gap-3 w-full p-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
               >
                 <Package className="w-5 h-5" />
@@ -215,6 +225,15 @@ const ProfilePage: React.FC = () => {
                     const script = tempDiv.querySelector('script');
                     return script?.getAttribute('data-saveaday-survey') || SURVEY_DATA.id;
                   })()}
+                  onClick={() => {
+                    if (window.gtag) {
+                      window.gtag('event', 'survey_open', {
+                        survey_name: SURVEY_DATA.name,
+                        survey_id: SURVEY_DATA.id,
+                      });
+                      console.log('GA Event: survey_open', { survey_name: SURVEY_DATA.name });
+                    }
+                  }}
                   className="text-slate-500 hover:text-slate-700 underline underline-offset-4 transition-colors cursor-pointer bg-transparent border-none font-inherit"
                 >
                   {SURVEY_DATA.name}
@@ -223,6 +242,13 @@ const ProfilePage: React.FC = () => {
               {LEAD_FORM_DATA && (
                 <button
                   onClick={() => {
+                    if (window.gtag) {
+                      window.gtag('event', 'lead_form_open', {
+                        form_name: LEAD_FORM_DATA.name,
+                        form_id: LEAD_FORM_DATA.id,
+                      });
+                      console.log('GA Event: lead_form_open', { form_name: LEAD_FORM_DATA.name });
+                    }
                     if (typeof (window as any).showLeadFormModal === 'function') {
                       (window as any).showLeadFormModal();
                     }
