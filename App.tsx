@@ -213,7 +213,7 @@ const ProfilePage: React.FC = () => {
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = SURVEY_DATA.embedCode;
                     const script = tempDiv.querySelector('script');
-                    return script?.getAttribute('data-survey-token') || SURVEY_DATA.id;
+                    return script?.getAttribute('data-saveaday-survey') || SURVEY_DATA.id;
                   })()}
                   className="text-slate-500 hover:text-slate-700 underline underline-offset-4 transition-colors cursor-pointer bg-transparent border-none font-inherit"
                 >
@@ -222,6 +222,11 @@ const ProfilePage: React.FC = () => {
               )}
               {LEAD_FORM_DATA && (
                 <button
+                  onClick={() => {
+                    if (typeof (window as any).showLeadFormModal === 'function') {
+                      (window as any).showLeadFormModal();
+                    }
+                  }}
                   data-saveaday-leadform={(() => {
                     const tempDiv = document.createElement('div');
                     tempDiv.innerHTML = LEAD_FORM_DATA.embedCode;

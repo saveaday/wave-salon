@@ -390,8 +390,8 @@
     },
     "leadForm": {
         "description": "",
-        "embedCode": "<script src=\"https://leads.saveaday.ai/embed/DvkFiPYUMJajAvCXhvWB.js\" data-leadform-token=\"DvkFiPYUMJajAvCXhvWB\"></script>",
-        "id": "DvkFiPYUMJajAvCXhvWB",
+        "embedCode": "<script src=\"https://leads.saveaday.ai/embed/a6f6fd20482436a9de128838.js\" data-leadform-token=\"a6f6fd20482436a9de128838\"></script>",
+        "id": "a6f6fd20482436a9de128838",
         "name": "Contact Us"
     },
     "linkPage": {
@@ -442,8 +442,8 @@
     },
     "survey": {
         "description": "Measure customer satisfaction with a specific interaction.",
-        "embedCode": "<script src=\"https://surveys.saveaday.ai/embed/NfB8xpqf5dDgH6CLOCW8.js\" data-survey-token=\"NfB8xpqf5dDgH6CLOCW8\"></script>",
-        "id": "NfB8xpqf5dDgH6CLOCW8",
+        "embedCode": "<script src=\"https://surveys.saveaday.ai/embed/1dbwna8qq93j.js\" data-saveaday-survey=\"1dbwna8qq93j\"></script>",
+        "id": "1dbwna8qq93j",
         "name": "Service Feedback"
     }
 }
