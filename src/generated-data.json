@@ -425,12 +425,57 @@
             }
         ],
         "profile": {
-            "address": "Dubai",
-            "bio": "",
-            "email": "mail@saveaday.ai",
+            "address": "Al Rashidiya, Ajman",
+            "bio": "Where beauty meets the mesmerizing hues of the Aegean 🌊✨.",
+            "email": "",
             "logo": "https://storage.googleapis.com/dvizfb.firebasestorage.app/tenants/x0P8bcooVLMknfD0FL86KcxOsMH3/uploads/Cj1ex7FLammjz5L_xGoX7.png",
             "name": "Wave Beauty Lounge",
-            "phone": "+971569737344"
+            "phone": "+97167454090",
+            "googleMaps": "https://maps.app.goo.gl/k8xgJHxfZFm7xmXZ8",
+            "businessHours": [
+                {
+                    "day": "Mon",
+                    "isOpen": true,
+                    "start": "10:00",
+                    "end": "22:00"
+                },
+                {
+                    "day": "Tue",
+                    "isOpen": true,
+                    "start": "10:00",
+                    "end": "22:00"
+                },
+                {
+                    "day": "Wed",
+                    "isOpen": true,
+                    "start": "10:00",
+                    "end": "22:00"
+                },
+                {
+                    "day": "Thu",
+                    "isOpen": true,
+                    "start": "10:00",
+                    "end": "22:00"
+                },
+                {
+                    "day": "Fri",
+                    "isOpen": true,
+                    "start": "10:00",
+                    "end": "22:00"
+                },
+                {
+                    "day": "Sat",
+                    "isOpen": true,
+                    "start": "10:00",
+                    "end": "22:00"
+                },
+                {
+                    "day": "Sun",
+                    "isOpen": true,
+                    "start": "10:00",
+                    "end": "22:00"
+                }
+            ]
         },
         "slug": "p-x0P8b-dpib9e",
         "theme": {

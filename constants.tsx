@@ -336,7 +336,52 @@ export const INITIAL_DATA: ApiResponse = {
         "logo": "https://img.freepik.com/free-vector/bird-colorful-gradient-design-vector_343694-2506.jpg?semt=ais_hybrid&w=740&q=80",
         "address": "Dubai dubai",
         "email": "me@bigmints.com",
-        "phone": "+971569737344"
+        "phone": "+971569737344",
+        "googleMaps": "https://maps.app.goo.gl/k8xgJHxfZFm7xmXZ8",
+        "businessHours": [
+          {
+            "day": "Mon",
+            "isOpen": true,
+            "start": "10:00",
+            "end": "22:00"
+          },
+          {
+            "day": "Tue",
+            "isOpen": true,
+            "start": "10:00",
+            "end": "22:00"
+          },
+          {
+            "day": "Wed",
+            "isOpen": true,
+            "start": "10:00",
+            "end": "22:00"
+          },
+          {
+            "day": "Thu",
+            "isOpen": true,
+            "start": "10:00",
+            "end": "22:00"
+          },
+          {
+            "day": "Fri",
+            "isOpen": true,
+            "start": "10:00",
+            "end": "22:00"
+          },
+          {
+            "day": "Sat",
+            "isOpen": true,
+            "start": "10:00",
+            "end": "22:00"
+          },
+          {
+            "day": "Sun",
+            "isOpen": true,
+            "start": "10:00",
+            "end": "22:00"
+          }
+        ]
       },
       "links": [
         {

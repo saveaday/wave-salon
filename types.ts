@@ -1,4 +1,11 @@
 
+export interface BusinessHour {
+  day: string;
+  isOpen: boolean;
+  start: string;
+  end: string;
+}
+
 export interface Profile {
   name: string;
   bio: string;
@@ -6,6 +13,8 @@ export interface Profile {
   address?: string;
   email?: string;
   phone?: string;
+  googleMaps?: string;
+  businessHours?: BusinessHour[];
 }
 
 export interface LinkItem {
